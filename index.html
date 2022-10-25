@@ -1,0 +1,57 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/7e82edf099.js" crossorigin="anonymous"></script>
+  <title>Prueba de Canvas</title>
+  <link href="./assets/css/styles.css" rel="stylesheet"/>
+</head>
+<body>
+  <header>
+    <h1>Canvas <i class="fa-solid fa-paintbrush"></i></h1>
+    <a href="http://github.com/fernandondin" class="github">Github<i class="fa-brands fa-github"></i></a>
+  </header>
+  
+<main>
+  <section class="tools">
+    <input type="color"  class="js-color-picker  color-picker">
+
+    <section>
+      <input type="range" class="js-line-range" min="1" max="72" value="1">
+      <div><label class="js-range-value">1</label>px</div>
+    </section>
+  
+    
+
+    <div class="box">
+      <input id="goma" type="checkbox" name="" value="false">
+      <label id="label-goma" class="check" for="goma"><i class="fa-solid fa-eraser"></i></label>
+    </div>
+
+    <button id="borrar" type="button"> 
+      <i class="fa-solid fa-trash"></i>
+    </button >
+
+  </section>
+  <div class="canv">
+    <canvas class="js-paint  paint-canvas" width="900" height="450">
+    </canvas>
+    <canvas id="js" class="js-paint  paint-canvas" width="900" height="450">
+    </canvas>
+  </div>
+  
+  
+</main>
+  
+
+</body>
+
+<script src="assets/js/script.js"></script>
+<script>
+  
+  
+
+</script>
+</html>

@@ -1,0 +1,172 @@
+@import url(//db.onlinewebfonts.com/c/f3f61486e45df6f226cfa5ca8f39bdf7?family=Aclonica);
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap');
+
+:root{
+  --background:#F3F3F3;
+  --slider-background:#D0D0D0;
+  --slider-background-hover:#B0B0B0;
+  --slider:#ffff;
+  --goma:rgba(129, 194, 255, 1);
+  --letras: rgba(121, 120, 120, 1);
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  background: var(--background);
+}
+
+header{
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 80px;
+  padding: 0px 30px 0px 30px;
+  box-shadow: 0px 9px 22px -6px rgba(0, 0, 0, 0.25);
+  font-family: Aclonica;
+  color: var(--letras);
+  width: 100%;
+}
+.github{
+  text-decoration: none;
+  color: var(--letras);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Comfortaa;
+  gap:10px;
+  border: var(--letras) 1px solid;
+  border-radius: 5px;
+  padding: 10px;
+  font-weight: 1000;
+  font-size: 17px;
+  transition: all 0.4s;
+}
+.github:hover{
+  background: var(--letras);
+  color: white;
+}
+
+main{
+  margin-top: 15px;
+  display: grid;
+  justify-content: center;
+}
+section{
+  display: flex;
+  align-items: center;
+  gap:10px;
+  font-family: Comfortaa;
+  color: var(--letras);
+}
+.paint-canvas {
+  background-color: transparent;
+  box-shadow: 0px 8px 21px 4px rgba(0, 0, 0, 0.25);
+}
+
+.canv{
+  background-color: white;
+  width: 900px;
+  height: 450px;
+}
+canvas{
+  position: absolute;
+}
+
+#js{
+  background-color: transparent;
+  z-index: 0;
+}
+.js-line-range {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 10px;
+  background: var(--slider-background);
+  border-radius: 16px;
+  border-radius: 50px;
+  outline: none;
+  -webkit-transition: .2s;
+  transition: all .2s;
+}
+
+.js-line-range:hover {
+  background-color: var(--slider-background-hover);
+}
+
+.js-line-range::-webkit-slider-thumb {
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  -webkit-appearance: none;
+  appearance: none;
+  width: 40px;
+  height: 15px;
+  background: var(--slider);
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+.js-line-range::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  border-radius: 25px;
+  background: #04AA6D;
+  cursor: pointer;
+}
+
+.tools{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 15px;
+  margin: 1rem;
+}
+
+
+button{
+  all: unset;
+  cursor: pointer;
+}
+
+
+
+#borrar{
+  display: flex;
+  align-items:center;
+  justify-content: center;
+  gap:5px;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: rgba(255, 155, 155, 1);
+  transition: all 0.3s;
+}
+
+#borrar i{
+  color:white;
+
+}
+
+#borrar:hover{
+  background-color: rgba(255, 0, 0, 1);
+}
+
+#goma{
+  display: none;
+}
+
+#label-goma{
+  padding: 10px;
+  border-radius: 10px;
+  color: var(--goma);
+  border: 1px solid var(--goma);
+  cursor: pointer;
+}
+
+#goma:checked + #label-goma{
+  background-color: var(--goma);
+  color: white;
+}
