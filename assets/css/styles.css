@@ -1,4 +1,4 @@
-@import url(//db.onlinewebfonts.com/c/f3f61486e45df6f226cfa5ca8f39bdf7?family=Aclonica);
+@import url('http://fonts.cdnfonts.com/css/aclonica');
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap');
 
 :root{
@@ -8,6 +8,7 @@
   --slider:#ffff;
   --goma:rgba(129, 194, 255, 1);
   --letras: rgba(121, 120, 120, 1);
+  --borrar: rgba(255, 155, 155, 1);
 }
 
 *{
@@ -141,7 +142,7 @@ button{
   gap:5px;
   border-radius: 10px;
   padding: 10px;
-  background-color: rgba(255, 155, 155, 1);
+  background-color: var(--borrar);
   transition: all 0.3s;
 }
 
