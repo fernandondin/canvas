@@ -1,12 +1,54 @@
-const paintCanvas = document.querySelector( '.js-paint' );
+  let x = 0, y = 0;
+  let isMouseDown = false;
+
+  const stopDrawing = () => { isMouseDown = false; }
+  const startDrawing = event => {
+      isMouseDown = true;   
+     [x, y] = [event.offsetX, event.offsetY];  
+  }
+  const drawLine = event => {
+      if ( isMouseDown ) {
+          const newX = event.offsetX;
+          const newY = event.offsetY;
+          context.beginPath();
+          context.moveTo( x, y );
+          context.lineTo( newX, newY );
+          context.stroke();
+          //[x, y] = [newX, newY];
+          x = newX;
+          y = newY;
+      }
+  }
+  const header = document.querySelector('header');
+  const paintCanvas = document.querySelector( '#js-paint' );
+  const canv = document.querySelector( '.canv' );
+  const tools = document.querySelector('.tools');
+
+  header.width = document.documentElement.clientWidth;
+  canv.width = document.documentElement.clientWidth;
+  paintCanvas.width = document.documentElement.clientWidth;
+  paintCanvas.height = document.documentElement.clientHeight - header.clientHeight - tools.clientHeight -20;
   
   const context = paintCanvas.getContext( '2d' );
   context.lineCap = 'round';
 
   const paintCanvas1 = document.querySelector( '#js' );
+  paintCanvas1.width= document.documentElement.clientWidth;
+  paintCanvas1.height= document.documentElement.clientHeight - header.clientHeight - tools.clientHeight -20;
+  paintCanvas1.addEventListener( 'mousedown', startDrawing ); 
   const context1 = paintCanvas1.getContext( '2d' );
   context1.lineCap = 'round';
   context1.globalCompositeOperation = 'destination-atop';
+
+  window.addEventListener('resize', function(event){
+    paintCanvas.width = document.documentElement.clientWidth;
+    paintCanvas.height = document.documentElement.clientHeight - header.clientHeight - tools.clientHeight -20;
+    paintCanvas1.width= document.documentElement.clientWidth;
+    paintCanvas1.height= document.documentElement.clientHeight - header.clientHeight - tools.clientHeight -20;
+    context1.globalCompositeOperation = 'destination-atop';
+    console.log("resize")
+    context.lineCap = 'round';
+  });
   
   paintCanvas1.addEventListener('mousemove', (e) => {
     let size = lineWidthRange.value;
@@ -14,7 +56,6 @@ const paintCanvas = document.querySelector( '.js-paint' );
     context1.arc(e.offsetX, e.offsetY, size, 0, Math.PI * 2);
     context1.strokeStyle = colorPicker.value;
     context1.stroke();
-    
   });
 
   
@@ -53,27 +94,6 @@ const paintCanvas = document.querySelector( '.js-paint' );
       context.lineWidth = width;
   } );
 
-  let x = 0, y = 0;
-  let isMouseDown = false;
-
-  const stopDrawing = () => { isMouseDown = false; }
-  const startDrawing = event => {
-      isMouseDown = true;   
-     [x, y] = [event.offsetX, event.offsetY];  
-  }
-  const drawLine = event => {
-      if ( isMouseDown ) {
-          const newX = event.offsetX;
-          const newY = event.offsetY;
-          context.beginPath();
-          context.moveTo( x, y );
-          context.lineTo( newX, newY );
-          context.stroke();
-          //[x, y] = [newX, newY];
-          x = newX;
-          y = newY;
-      }
-  }
 
   paintCanvas1.addEventListener( 'mousedown', startDrawing );
   paintCanvas1.addEventListener( 'mousemove', drawLine );
