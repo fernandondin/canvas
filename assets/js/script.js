@@ -26,6 +26,7 @@
 
   header.width = document.documentElement.clientWidth;
   canv.width = document.documentElement.clientWidth;
+  canv.height = document.documentElement.clientHeight - header.clientHeight - tools.clientHeight - 20;
   paintCanvas.width = document.documentElement.clientWidth;
   paintCanvas.height = document.documentElement.clientHeight - header.clientHeight - tools.clientHeight -20;
   
@@ -40,13 +41,47 @@
   context1.lineCap = 'round';
   context1.globalCompositeOperation = 'destination-atop';
 
+  const paintCanvas2 = document.querySelector( '#ejez' );
+  paintCanvas2.width= document.documentElement.clientWidth;
+  paintCanvas2.height= document.documentElement.clientHeight - header.clientHeight - tools.clientHeight -20;
+  const context2 = paintCanvas2.getContext( '2d' );
+  context2.lineCap = 'round';
+  for(i=0;i<paintCanvas2.width;i+=50){
+    context2.beginPath();
+    context2.moveTo( i, 0);
+    context2.lineTo( i, paintCanvas2.clientHeight); 
+    context2.stroke();
+  }
+  for(i=0;i<paintCanvas2.height;i+=50){
+    context2.beginPath();
+    context2.moveTo( 0, i);
+    context2.lineTo( paintCanvas2.clientWidth,i); 
+    context2.stroke();
+  }
+
   window.addEventListener('resize', function(event){
+    canv.width = document.documentElement.clientWidth;
+    canv.height = document.documentElement.clientHeight - header.clientHeight - tools.clientHeight - 20;
     paintCanvas.width = document.documentElement.clientWidth;
     paintCanvas.height = document.documentElement.clientHeight - header.clientHeight - tools.clientHeight -20;
     paintCanvas1.width= document.documentElement.clientWidth;
     paintCanvas1.height= document.documentElement.clientHeight - header.clientHeight - tools.clientHeight -20;
+    paintCanvas2.width= document.documentElement.clientWidth;
+    paintCanvas2.height= document.documentElement.clientHeight - header.clientHeight - tools.clientHeight -20;
     context1.globalCompositeOperation = 'destination-atop';
-    console.log("resize")
+    context2.clearRect(0, 0, paintCanvas2.clientWidth, paintCanvas2.clientHeight);
+    for(i=0;i<paintCanvas2.width;i+=50){
+      context2.beginPath();
+      context2.moveTo( i, 0);
+      context2.lineTo( i, paintCanvas2.clientHeight); 
+      context2.stroke();
+    }
+    for(j=0;j<paintCanvas2.height;j+=50){
+      context2.beginPath();
+      context2.moveTo( 0, j);
+      context2.lineTo( paintCanvas2.clientWidth,j); 
+      context2.stroke();
+    }  
     context.lineCap = 'round';
   });
   
@@ -61,6 +96,7 @@
   
   const procesarClickBorrar = function (event) {
     context.clearRect(0, 0, paintCanvas.clientWidth, paintCanvas.clientHeight);
+    
   }
 
   const goma = document.querySelector('#goma');
